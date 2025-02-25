@@ -1,0 +1,54 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 400;
+
+  --font-font-family: 'On Air';
+
+  --font-body-letter-spacing: 0.01px;
+
+  --font-body-m-size: 1rem;
+  --font-body-m-weight: 400;
+  --font-body-m-line-height: 1.375rem;
+
+  --font-label-letter-spc: 0.01rem;
+
+  --font-label-m-size: 1rem;
+  --font-label-m-weight: 500;
+  --font-label-m-line-height: 1.375rem;
+
+  --font-label-s-size: 0.875rem;
+  --font-label-s-weight: 550;
+  --font-label-s-line-height: 1.0625rem;
+
+  --color-content-on-neutral-xx-high: #2C2C31;
+  --color-content-on-neutral-low: #7D7D8A;
+  --color-content-on-neutral-x-low: #C9C9CE;
+  --color-content-on-neutral-warning: #A56315;
+  --color-content-on-neutral-danger: #DC2828;
+  --color-surface-x-high: #8C8C9A;
+  --color-state-default-focus: #1A1A1ACC;
+  --color-state-default-hover: #1A1A1A0F;
+  --color-surface-x-low: #FFFFFF;
+  --color-surface-brand: #0050FF;
+  --color-surface-warning: #A56315;
+  --color-surface-warning-variant: #FAF1B6;
+  --color-surface-danger: #DC2828;
+  --color-surface-danger-variant: #FFDCDC;
+
+  --dimension-radius-input: 0.75rem;
+  --dimension-s: 0.75rem;
+  --dimension-m: 1rem;
+  --dimension-l: 1.25rem;
+  --dimension-5xl: 3rem;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
