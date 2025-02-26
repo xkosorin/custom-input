@@ -11,22 +11,22 @@ export interface InputProps extends React.ComponentProps<"input"> {
 
 const CustomInput = forwardRef<HTMLInputElement, InputProps>(
   ({ type, secondaryLabel, variant = "default", ...props }, ref) => {
-    const labelClasses = clsx(styles["custom-label"], styles["font-lablel-m"], {
-      [styles["custom-label-warning"]]: variant === "warning",
-      [styles["custom-label-error"]]: variant === "error",
+    const labelClasses = clsx(styles["label"], styles["label-main"], {
+      [styles["label-warning"]]: variant === "warning",
+      [styles["label-error"]]: variant === "error",
     });
 
-    const inputClasses = clsx(styles["custom-input"], {
-      [styles["custom-input-warning"]]: variant === "warning",
-      [styles["custom-input-error"]]: variant === "error",
+    const inputClasses = clsx(styles["input"], {
+      [styles["input-warning"]]: variant === "warning",
+      [styles["input-error"]]: variant === "error",
     });
 
     return (
-      <div className={styles.container}>
         <label htmlFor={props.id} className={labelClasses}>
+      <div className={styles["container"]}>
           {props.label}
           {secondaryLabel && (
-            <span className={styles["font-label-s"]}>{secondaryLabel}</span>
+            <span className={styles["label-secondary"]}>{secondaryLabel}</span>
           )}
         </label>
         <input
