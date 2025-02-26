@@ -57,6 +57,10 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           value={value}
           onChange={onChange}
+          aria-invalid={variant === "error"}
+          aria-describedby={
+            errorMessage && variant === "error" ? errorId : undefined
+          }
           {...props}
         />
         {errorMessage && variant === "error" && (
