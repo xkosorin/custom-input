@@ -22,7 +22,7 @@ This project demonstrates a custom input component built with React, TypeScript,
 1.  Clone the repository:
 
     ```bash
-    git clone <repository_url>
+    git clone git@github.com:xkosorin/custom-input.git
     ```
 
 2.  Navigate to the project directory:
@@ -69,10 +69,10 @@ const MyComponent: React.FC = () => {
   return (
     <div>
       <CustomInput
-        type="text"
         id="my-input"
         label="My Label"
         placeholder="Enter text here"
+        onChange={(e) => console.log(e.target.value)}
       />
     </div>
   );
@@ -85,12 +85,15 @@ export default MyComponent;
 
 The `CustomInput` component accepts the following props:
 
-*   `type`: (string) The type of the input field (e.g., "text", "email", "password"). Inherited from standard HTML input.
-*   `id`: (string, **required**) A unique ID for the input field.  Required for label association and accessibility.
-*   `label`: (string, **required**) The text to display as the label for the input field.
-*   `placeholder`: (string) The placeholder text to display when the input is empty.
-*   `className`: (string, optional)  An optional CSS class name that can be applied to the input's container.  This allows for external styling in addition to CSS Modules.
-*   All other standard HTML input attributes (e.g., `name`, `value`, `onChange`, `required`, `disabled`, etc.).
+*   `id`: `string` (**Required**) A unique ID for the input field. Required for label association and accessibility.
+*   `label`: `string` (**Required**) The text to display as the label for the input field.
+*   `value`: `string` The current value of the input. Use this prop for controlled components.
+*   `type`: `string` The type of the input field (e.g., "text", "email", "password", "number"). Leverages React's built-in input type definitions for comprehensive type support. Defaults to `"text"`.
+*   `errorMessage`: `string` Optional error message to display below the input when `variant="error"`. This message will be associated with the input for accessibility purposes.
+*   `secondaryLabel`: `string` Optional secondary label text displayed next to the main label.
+*   `variant`: `"default"` | `"warning"` | `"error"` The visual style of the input. Use `"warning"` to indicate a warning state and `"error"` to indicate an error state. Defaults to `"default"`.
+*   `onChange`: `(e: React.ChangeEvent<HTMLInputElement>) => void` A callback function that is called when the input value changes. Required for controlled components.
+*   `...props`: `Omit<React.ComponentProps<"input">, "id" | "type">` All other standard HTML input attributes (e.g., `placeholder`, `required`, `disabled`, `name`, etc.). The `id` and `type` props are managed separately by `CustomInput`.
 
 ## CSS Customization
 
