@@ -2,15 +2,34 @@ import { forwardRef } from "react";
 import styles from "./CustomInput.module.css";
 import clsx from "clsx";
 
-export interface InputProps extends React.ComponentProps<"input"> {
+export type InputType = React.ComponentProps<"input">["type"];
+
+export interface InputProps
+  extends Omit<React.ComponentProps<"input">, "id" | "type"> {
   variant?: "default" | "warning" | "error";
   label?: string;
   secondaryLabel?: string;
   id: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  errorMessage?: string;
+  type?: InputType;
 }
 
 const CustomInput = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, secondaryLabel, variant = "default", ...props }, ref) => {
+  (
+    {
+      id,
+      type,
+      secondaryLabel,
+      variant = "default",
+      value,
+      onChange,
+      errorMessage,
+      ...props
+    },
+    ref,
+  ) => {
     const labelClasses = clsx(styles["label"], styles["label-main"], {
       [styles["label-warning"]]: variant === "warning",
       [styles["label-error"]]: variant === "error",
@@ -21,20 +40,30 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>(
       [styles["input-error"]]: variant === "error",
     });
 
+    const errorId = `${id}-error`;
+
     return (
-        <label htmlFor={props.id} className={labelClasses}>
       <div className={styles["container"]}>
+        <label htmlFor={id} className={labelClasses}>
           {props.label}
           {secondaryLabel && (
             <span className={styles["label-secondary"]}>{secondaryLabel}</span>
           )}
         </label>
         <input
+          id={id}
           className={inputClasses}
           type={type}
           ref={ref}
+          value={value}
+          onChange={onChange}
           {...props}
         />
+        {errorMessage && variant === "error" && (
+          <div id={errorId} className={styles["error-message"]}>
+            {errorMessage}
+          </div>
+        )}
       </div>
     );
   },

@@ -95,3 +95,8 @@
 .input-error:hover {
   border-color: var(--color-surface-danger);
 }
+
+.error-message {
+  color: var(--color-content-on-neutral-danger);
+  font-size: var(--font-label-s-size);
+}
