@@ -6,21 +6,21 @@ export type InputType = React.ComponentProps<"input">["type"];
 
 export interface InputProps
   extends Omit<React.ComponentProps<"input">, "id" | "type"> {
-  variant?: "default" | "warning" | "error";
-  label?: string;
-  secondaryLabel?: string;
   id: string;
+  label: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorMessage?: string;
   type?: InputType;
+  errorMessage?: string;
+  secondaryLabel?: string;
+  variant?: "default" | "warning" | "error";
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CustomInput = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       id,
-      type,
+      type = "text",
       secondaryLabel,
       variant = "default",
       value,
